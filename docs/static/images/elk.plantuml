@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+agent filebeat
+agent metricbeat
+agent packetbeat
+agent auditbeat
+agent "Java Apps" as java
+agent "NodeJS Apps" as nodejs
+agent "Python Apps" as python
+agent ".NET Apps" as dotNet
+agent "Go Apps" as go
+agent "Ruby Apps" as ruby
+
+agent "Alert API" as alert
+
+node ElasticSearch
+node Kibana
+node Logstash
+node "Application Performance Monitoring" as APM
+
+Logstash --> ElasticSearch
+Logstash "告警输出"--> alert
+ElasticSearch --->"数据可视化" Kibana
+filebeat "日志审计"--> Logstash
+metricbeat "资源审计"--> Logstash
+packetbeat "流量审计"--> Logstash
+auditbeat "安全审计"--> Logstash
+java "应用审计"--> APM
+nodejs "应用审计"--> APM
+python "应用审计"--> APM
+dotNet "应用审计"--> APM
+go "应用审计"--> APM
+ruby "应用审计"--> APM
+APM --> ElasticSearch
+
+@enduml

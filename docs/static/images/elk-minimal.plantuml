@@ -1,0 +1,39 @@
+@startuml
+
+left to right direction
+
+package "ElasticSearch" {
+  node ES1 [
+    ES1
+    ----
+    Master
+    ----
+    Data
+    ----
+    Ingest
+  ]
+  node ES2 [
+    ES2
+    ----
+    Master
+    ----
+    Data
+    ----
+    Ingest
+  ]
+  node ES3 [
+    ES3
+    ----
+    Master
+    ----
+    Data
+    ----
+    Ingest
+  ]
+}
+
+ES1<-->ES2
+ES2<-->ES3
+ES3<-->ES1
+
+@enduml

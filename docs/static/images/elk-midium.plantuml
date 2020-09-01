@@ -1,0 +1,61 @@
+@startuml
+
+left to right direction
+
+package "ElasticSearch Masters/Ingest" {
+  node ES1 [
+    ES-1
+    ----
+    Master
+    ----
+    Ingest
+  ]
+  node ES2 [
+    ES-2
+    ----
+    Master
+    ----
+    Ingest
+  ]
+  node ES3 [
+    ES-3
+    ----
+    Master
+    ----
+    Ingest
+  ]
+
+
+  ES1<-->ES2
+  ES2<-->ES3
+  ES3<-->ES1
+
+}
+
+package "ElasticSearch Data" {
+  node ESDATA1 [
+    ES-DATA-1
+    ----
+    Data
+  ]
+  node ESDATA2 [
+    ES-DATA-2
+    ----
+    Data
+  ]
+  node ESDATA3 [
+    ES-DATA-3
+    ----
+    Data
+  ]
+  node ESDATAN [
+    ES-DATA-n
+    ----
+    Data
+  ]
+
+}
+
+"ElasticSearch Masters/Ingest"<-->"ElasticSearch Data"
+
+@enduml

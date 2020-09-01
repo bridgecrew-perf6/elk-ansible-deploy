@@ -142,7 +142,7 @@ set mailserver
 # set mail-format { from: monit@foo.bar }
 
 set mail-format {
-  from: Monit {{ ansible_hostname | upper }} <alert@{{ smtp_host | default(ansible_hostname) }}>
+  from: Monit {{ ansible_hostname | upper }} <{{ smtp_user }}>
   subject: [监控] $EVENT $SERVICE
   message: $EVENT Service $SERVICE
   监控点： {{ ansible_hostname }}({{ inventory_hostname }})

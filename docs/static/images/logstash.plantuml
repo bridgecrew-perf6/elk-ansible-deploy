@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+
+package Logstash {
+  node "Logstash-1"
+  node "Logstash-2"
+  node "Logstash-3"
+}
+
+node "Net Devices" as netdevices
+node "Filebeat"
+node "MySQL"
+component "Syslog"
+
+netdevices --> Logstash
+Filebeat --> Logstash
+MySQL <-- Logstash
+Logstash <-- Syslog
+
+@enduml

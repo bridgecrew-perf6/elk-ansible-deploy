@@ -1,0 +1,109 @@
+@startuml
+
+package "ElasticSearch Masters/Ingest" {
+  node ES1 [
+    ES-1
+    ----
+    Master
+    ----
+    Ingest
+  ]
+  node ES2 [
+    ES-2
+    ----
+    Master
+    ----
+    Ingest
+  ]
+  node ES3 [
+    ES-3
+    ----
+    Master
+    ----
+    Ingest
+  ]
+
+
+  ES1<-->ES2
+  ES2<-->ES3
+  ES3<-->ES1
+
+}
+
+package "ElasticSearch Hot Data" {
+  node ESHOTDATA1 [
+    ES-HOT-DATA-1
+    ----
+    Data
+  ]
+  node ESHOTDATA2 [
+    ES-HOT-DATA-2
+    ----
+    Data
+  ]
+  node ESHOTDATA3 [
+    ES-HOT-DATA-3
+    ----
+    Data
+  ]
+  node ESHOTDATAN [
+    ES-HOT-DATA-n
+    ----
+    Data
+  ]
+
+}
+
+package "ElasticSearch Warm Data" {
+  node ESWARMDATA1 [
+    ES-WARM-DATA-1
+    ----
+    Data
+  ]
+  node ESWARMDATA2 [
+    ES-WARM-DATA-2
+    ----
+    Data
+  ]
+  node ESWARMDATA3 [
+    ES-WARM-DATA-3
+    ----
+    Data
+  ]
+  node ESWARMDATAN [
+    ES-WARM-DATA-n
+    ----
+    Data
+  ]
+
+}
+
+package "ElasticSearch Cold Data" {
+  node ESCOLDDATA1 [
+    ES-COLD-DATA-1
+    ----
+    Data
+  ]
+  node ESCOLDDATA2 [
+    ES-COLD-DATA-2
+    ----
+    Data
+  ]
+  node ESCOLDDATA3 [
+    ES-COLD-DATA-3
+    ----
+    Data
+  ]
+  node ESCOLDDATAN [
+    ES-COLD-DATA-n
+    ----
+    Data
+  ]
+
+}
+
+"ElasticSearch Masters/Ingest"<-->"ElasticSearch Hot Data"
+"ElasticSearch Masters/Ingest"<-->"ElasticSearch Warm Data"
+"ElasticSearch Masters/Ingest"<-->"ElasticSearch Cold Data"
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+package "Net Devices" as netdev {
+  [Gateway]
+  [Router]
+}
+
+node Logstash
+node ElasticSearch
+node Kibana
+node Alert
+node auditbeat
+
+netdev --->"netflow/sflow" Logstash
+Logstash --> ElasticSearch
+Logstash -> Alert
+ElasticSearch --> Kibana
+auditbeat -> ElasticSearch
+
+@enduml
